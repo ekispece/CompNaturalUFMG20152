@@ -26,7 +26,7 @@ public:
     static constexpr const char* SSUM_FUNC_TYPE = "+";
     static constexpr const char* SSUB_FUNC_TYPE = "-";
     static constexpr const char* SLOG_FUNC_TYPE = "log";
-    static constexpr const char* SNPOW_FUNC_TYPE = "npow";
+    static constexpr const char* SNPOW_FUNC_TYPE = "^";
 };
 
 #endif //TP1GENETICPROGRAMMING_TYPESDEFINITION_H

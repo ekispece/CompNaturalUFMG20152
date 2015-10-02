@@ -11,20 +11,24 @@
 class Operators
 {
 public:
-    const char * getType();
-    char* getValue();
-    void setType(const char *);
+    const char* getType();
+    const char* getValue();
+    void setValue(const char*);
+    void setType(const char*);
+    virtual TerminalType getContent();
+    virtual const char* getOperation();
 
 
 private:
-    const char *type;
-    char* value;
+    const char*type;
+    const char*value;
 };
 
 class Terminal : public Operators
 {
 public:
     TerminalType getContent();
+    void setContent(TerminalType);
 
     Terminal()
     {
@@ -39,15 +43,15 @@ private:
 class OperatorFunction : public Operators
 {
 public:
-    char* getOperation();
-    void setOperation(char*);
+    const char* getOperation();
+    void setOperation(const char*);
     OperatorFunction()
     {
         setType(OperatorsName::SOPERATOR_FUNCTION_TYPE);
     }
 
 private:
-    char* operation;
+    const char*operation;
 
 };
 

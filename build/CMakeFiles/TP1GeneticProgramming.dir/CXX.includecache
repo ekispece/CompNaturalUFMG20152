@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/BinaryTree.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Operators.cpp
+Operators.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Operators.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Operators.h
+TypesDefinition.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/TypesDefinition.h
+Terminals.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Terminals.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Population.cpp
+Population.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Population.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Population.h
+Operators.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Operators.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Terminals.cpp
+Terminals.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Terminals.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Terminals.h
+TypesDefinition.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/TypesDefinition.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/TypesDefinition.h
+
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/main.cpp
+iostream
+-
+Operators.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/Operators.h
+BinaryTree.h
+/home/sergio/Copy/UFMG/Graduacao/2015_2/ComputacaoNatural/TP1/BinaryTree.h
+

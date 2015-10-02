@@ -11,7 +11,7 @@
 class TerminalType
 {
 public:
-    const char * getType();
+    const char* getType();
     int getValue();
     void setValue(int);
     void setType(const char* type);
