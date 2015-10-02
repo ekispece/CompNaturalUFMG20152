@@ -16,7 +16,7 @@ class TerminalsName
 {
 public:
     static constexpr const char* SVARIABLE_TYPE = "variable";
-    static constexpr const char* SNUMBER_TYPE = "number";
+    static constexpr const char* SCONSTANT_TYPE = "number";
 };
 
 class OperatorsFunctionsName

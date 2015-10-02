@@ -18,17 +18,35 @@ public:
         parent = nullptr;
         this->content = content;
     }
-
-    void insertChilds(Node<T>* left, Node<T>* right)
+    Node(T &content, int layer, Node<T>* parent)
     {
+        this->left = nullptr;
+        this->right = nullptr;
+        this->leaf = true;
+        this->layer = layer;
+        this->parent = parent;
+        this->content = content;
+    }
+
+    void insertChildren(T &contentLeft, T &contentRight)
+    {
+        Node<T>* left = new Node(contentLeft, this->layer+1, this);
+        Node<T>* right = new Node(contentRight, this->layer+1, this);
         this->leaf = false;
         this->left = left;
         this->right = right;
-        left->parent = this;
-        right->parent = this;
-        left->layer = this->layer+1;
-        right->layer = this->layer+1;
+        std::cout << "Left: " << left->content.getValue() << " " << right->content.getType() << std::endl;
+        std::cout << "Right : " << right->content.getValue() << " " << right->content.getType();
+        //insertLeftChild(contentLeft);
     }
+
+    void insertLeftChild(T &contentLeft)
+    {
+        Node<T>* left = new Node(contentLeft, this->layer+1, this);
+        this->leaf = false;
+        this->left = left;
+    }
+
     T content;
     Node* left;
     Node* right;
@@ -47,7 +65,6 @@ public:
     }
 
     Node<T>* getRoot() { return this->root; }
-    int getSize() { return this->size; }
     Node<T>* getLeftmostChild()
     {
         Node<T>* it = getRoot();
@@ -55,11 +72,19 @@ public:
         {
             it = it->left;
         }
+        return it;
+    }
+
+    int getSize()
+    {
+        Node<T>* n = getLeftmostChild();
+        this->size = n->layer+1;
+        return this->size;
     }
 
 private:
     Node<T>* root;
-    int size;
+    int size = 1;
 };
 
 #endif //TP1GENETICPROGRAMMING_BINARYTREE_H

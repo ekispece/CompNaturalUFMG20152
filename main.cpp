@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "Operators.h"
 #include "BinaryTree.h"
 
@@ -10,26 +11,24 @@ int main()
     std::cout << "Hello, no seed was defined, so the program will use the default time(NULL) seed." << std::endl << "Your seed is : " + to_string(seed) << std::endl;
     srand(seed);
 
-    Operators op1;
-    OperatorFunction f1;
-    f1.setOperation(OperatorsFunctionsName::SMULT_FUNC_TYPE);
-    op1 = f1;
-    Terminal t1;
-    Terminal t2;
-    Variable v1;
-    v1.setValue(2);
-    Variable v2;
-    v1.setValue(3);
-    t1.setContent(v1);
-    t2.setContent(v2);
+    Function mult(OperatorsFunctionsName::SMULT_FUNC_TYPE);
+    Operators op = mult;
+    Function log(OperatorsFunctionsName::SLOG_FUNC_TYPE);
+    Tree<Operators> tree(op);
 
-    Tree<Operators> tree(op1);
-    Node<Operators>* root = tree.getRoot();
-    root->insertChilds(new Node<Operators>(t1), new Node<Operators>(t2));
+    auto root = tree.getRoot();
 
-    Node<Operators>* leftmostChild = tree.getLeftmostChild();
+    Variable v1(1);
+    op = v1;
+    root->insertLeftChild(op);
+    Number n1(3.2);
+    Number n2(3.3);
+    //root->insertLeftChild(*c1);
+    //root->content = v1;
 
-    std::cout << "Value of tree : " << root->left->content.getContent().getValue();
+
+    std::cout << "Value of Constant : " << tree.getRoot()->content.getValue();
+    std::cout << "Value of leftmost child : " << tree.getLeftmostChild()->content.getValue();
 
 
     //std::cout << "You created a variable of type " << t.getType() << " = " << t.getValue() << " or " << t.getValueAsCharConstant() << std::endl;
