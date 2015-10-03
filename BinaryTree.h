@@ -6,10 +6,12 @@
 #define TP1GENETICPROGRAMMING_BINARYTREE_H
 
 
-template <class T> class Node
+#include <sstream>
+
+class Node
 {
 public:
-    Node(T &content)
+    Node(Operators& content)
     {
         left = nullptr;
         right = nullptr;
@@ -18,7 +20,7 @@ public:
         parent = nullptr;
         this->content = content;
     }
-    Node(T &content, int layer, Node<T>* parent)
+    Node(Operators& content, int layer, Node* parent)
     {
         this->left = nullptr;
         this->right = nullptr;
@@ -28,26 +30,22 @@ public:
         this->content = content;
     }
 
-    void insertChildren(T &contentLeft, T &contentRight)
+    void insertChildren(Operators& contentLeft, Operators& contentRight)
     {
-        Node<T>* left = new Node(contentLeft, this->layer+1, this);
-        Node<T>* right = new Node(contentRight, this->layer+1, this);
         this->leaf = false;
-        this->left = left;
-        this->right = right;
-        std::cout << "Left: " << left->content.getValue() << " " << right->content.getType() << std::endl;
-        std::cout << "Right : " << right->content.getValue() << " " << right->content.getType();
+        this->left = new Node(contentLeft, this->layer+1, this);
+        this->right = new Node(contentRight, this->layer+1, this);
         //insertLeftChild(contentLeft);
     }
 
-    void insertLeftChild(T &contentLeft)
+    void insertLeftChild(Operators& contentLeft)
     {
-        Node<T>* left = new Node(contentLeft, this->layer+1, this);
+        Node* left = new Node(contentLeft, this->layer+1, this);
         this->leaf = false;
         this->left = left;
     }
 
-    T content;
+    Operators content;
     Node* left;
     Node* right;
     Node* parent;
@@ -55,19 +53,20 @@ public:
     int layer;
 };
 
-template <class T> class Tree
+class Tree
 {
 public:
-    Tree(T& content)
+    Tree(){};
+    Tree(Operators& content)
     {
-        Node<T>* root = new Node<T>(content);
+        Node* root = new Node(content);
         this->root = root;
     }
 
-    Node<T>* getRoot() { return this->root; }
-    Node<T>* getLeftmostChild()
+    Node* getRoot() { return this->root; }
+    Node* getLeftmostChild()
     {
-        Node<T>* it = getRoot();
+        Node* it = getRoot();
         while (!it->leaf)
         {
             it = it->left;
@@ -77,13 +76,32 @@ public:
 
     int getSize()
     {
-        Node<T>* n = getLeftmostChild();
+        Node* n = getLeftmostChild();
         this->size = n->layer+1;
         return this->size;
     }
+    std::string getMathematicalExpression()
+    {
+        return getMathematicalExpression(this->root);
+    }
 
 private:
-    Node<T>* root;
+    std::string getMathematicalExpression(Node* node)
+    {
+        std::stringstream result;
+        if(!node->leaf)
+        {
+            std::string left = getMathematicalExpression(node->left);
+            std::string right = getMathematicalExpression(node->right);
+            result << "(" << left << node->content.getValue() << right << ")" ;
+        }
+        else
+        {
+            return node->content.getValue();
+        }
+        return result.str();
+    }
+    Node* root;
     int size = 1;
 };
 

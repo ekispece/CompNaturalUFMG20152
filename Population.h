@@ -6,15 +6,32 @@
 #define TP1GENETICPROGRAMMING_POPULATION_H
 
 #include "Operators.h"
+#include "BinaryTree.h"
 
 class Individual
 {
 public:
-    void generateRandomIndividual();
+    Individual();
+    Individual(Individual&, Individual&);
+
+    Tree &getGenotype()
+    {
+        return genotype;
+    }
 
 private:
-    //static tree<Operators> treeDefinition;
+    void populateNode(Node*);
+    Tree genotype;
 };
 
+Operators generateRandomOperator();
+
+Operators generateRandomTerminal();
+
+Variable generateRandomVariable();
+
+Constant generateRandomConstant();
+
+Function generateRandomFunction();
 
 #endif //TP1GENETICPROGRAMMING_POPULATION_H

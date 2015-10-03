@@ -4,6 +4,8 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/BinaryTree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ExecutionParameters.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ExpressionParse.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Operators.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Operators.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Population.cpp" isTestSource="false" />
@@ -12,6 +14,22 @@
       <sourceFolder url="file://$MODULE_DIR$/Terminals.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TypesDefinition.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserBase.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserBytecode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserCallback.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserDef.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserError.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserFixes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserStack.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserToken.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/include/muParserTokenReader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/src/muParser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/src/muParserBase.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/src/muParserBytecode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/src/muParserCallback.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/src/muParserError.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/muparser/src/muParserTokenReader.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

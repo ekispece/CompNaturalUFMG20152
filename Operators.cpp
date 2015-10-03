@@ -4,24 +4,16 @@
 
 #include "Operators.h"
 
-const char* Operators::getType() { return this->type; }
-const char* Operators::getValue() { return this->value; }
-void Operators::setValue(const char* value) { this->value = value;}
-void Operators::setType(const char* type) { this->type = type; }
-const char* Operators::getOperation(){};
-const char Operators::getValueAsCharVariable() { }
-const char* Operators::getTerminalType() { }
+std::string Operators::getType() { return this->type; }
+std::string Operators::getValue() { return this->value; }
+void Operators::setValue(std::string value) { this->value = value;}
+void Operators::setType(std::string type) { this->type = type; }
+std::string Operators::getOperation(){};
+std::string Operators::getTerminalType() { }
+void Operators::setValue(double value) { char* c; const char *cp = std::to_string(value).c_str(); strncpy(c, cp , sizeof(cp)); c[7]='\0'; ; this->value = c; }
 
-const char*Function::getOperation() { return this->operation; }
-void Function::setOperation(const char* operation) { this->operation = operation; setValue(operation); }
+std::string Function::getOperation() { return this->operation; }
+void Function::setOperation(std::string operation) { this->operation = operation; setValue(operation); }
 
-void Variable::setIntValue(int value) { this->intValue = value; }
-const char Variable::getValueAsCharVariable()
-{
-    const char c = (char) this->intValue + 64;
-    return c;
-}
-
-//void Constant::setConstantValue(double value) { this->constantValue = value; }
-
-const char* Number::getTerminalType() { return terminalType; }
+double Constant::getConstant() { return this->constant; }
+std::string Constant::getTerminalType() { return this->terminalType; }

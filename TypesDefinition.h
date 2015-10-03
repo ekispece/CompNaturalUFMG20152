@@ -5,6 +5,8 @@
 #ifndef TP1GENETICPROGRAMMING_TYPESDEFINITION_H
 #define TP1GENETICPROGRAMMING_TYPESDEFINITION_H
 
+#include <vector>
+
 class OperatorsName
 {
 public:
@@ -22,11 +24,22 @@ public:
 class OperatorsFunctionsName
 {
 public:
+    static const int totalFunctions = 5;
     static constexpr const char* SMULT_FUNC_TYPE = "*";
     static constexpr const char* SSUM_FUNC_TYPE = "+";
     static constexpr const char* SSUB_FUNC_TYPE = "-";
-    static constexpr const char* SLOG_FUNC_TYPE = "log";
+    static constexpr const char* SDIV_FUNC_TYPE = "/";
     static constexpr const char* SNPOW_FUNC_TYPE = "^";
+    static std::vector<const char*> getFunctionsVector()
+    {
+        std::vector<const char*> v;
+        v.push_back("*");
+        v.push_back("+");
+        v.push_back("-");
+        v.push_back("/");
+        v.push_back("^");
+        return v;
+    }
 };
 
 #endif //TP1GENETICPROGRAMMING_TYPESDEFINITION_H

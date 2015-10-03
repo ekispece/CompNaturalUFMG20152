@@ -8,62 +8,32 @@
 #include "TypesDefinition.h"
 #include "Terminals.h"
 #include <string>
+#include <cstring>
 
 class Operators
 {
 public:
     Operators(){};
-    const char* getType();
-    const char* getValue();
-    void setValue(const char*);
-    void setType(const char*);
-    virtual const char* getOperation();
-    virtual const char getValueAsCharVariable();
-    virtual const char* getTerminalType();
+    std::string getType();
+    std::string getValue();
+    void setValue(std::string);
+    void setValue(double);
+    void setType(std::string);
+    virtual std::string getOperation();
+    virtual std::string getTerminalType();
 
 
 private:
-    const char*type;
-    const char*value;
+    std::string type;
+    std::string value;
 };
-
-class Variable : public Operators
-{
-public:
-    Variable(const int value)
-    {
-        this->intValue = value;
-        setType(TerminalsName::SVARIABLE_TYPE);
-        setValue(std::to_string(this->intValue).c_str());
-    }
-    void setIntValue(int);
-    const char getValueAsCharVariable();
-
-private:
-    int intValue;
-};
-
-/*class Constant : public Operators
-{
-public:
-    Constant(double value)
-    {
-        this->constantValue = value;
-        setType(TerminalsName::SCONSTANT_TYPE);
-        setValue(std::to_string(this->constantValue).c_str());
-    }
-    void setConstantValue(double);
-
-private:
-    double constantValue;
-};*/
 
 class Function : public Operators
 {
 public:
-    const char* getOperation();
-    void setOperation(const char*);
-    Function(const char * op)
+    std::string getOperation();
+    void setOperation(std::string);
+    Function(std::string  op)
     {
         this->operation = op;
         setType(OperatorsName::SOPERATOR_FUNCTION_TYPE);
@@ -71,24 +41,45 @@ public:
     }
 
 private:
-    const char*operation;
+    std::string operation;
 };
 
-class Number : public Operators
+class Constant : public Operators
 {
 public:
-    Number(double value) :
-            numberValue(value),
+    double getConstant();
+    std::string getTerminalType();
+    Constant(double constant) :
+            constant(constant),
             terminalType(TerminalsName::SCONSTANT_TYPE)
     {
         setType(OperatorsName::STERMINAL_TYPE);
-        setValue(std::to_string(this->numberValue).c_str());
+        setValue(constant);
     }
-    const char* getTerminalType();
 
 private:
-    double numberValue;
-    const char* terminalType;
+    double constant;
+    std::string terminalType;
+};
+
+class Variable : public Operators
+{
+public:
+    Variable(int variableIntValue) :
+            variableIntValue(variableIntValue),
+            terminalType(TerminalsName::SVARIABLE_TYPE)
+    {
+        setType(OperatorsName::STERMINAL_TYPE);
+        char c1 = (variableIntValue + 64);
+        char* val = (char *) malloc(2);
+        val[0] = c1;
+        val[1] = '\0';
+        setValue(val);
+    }
+
+private:
+    int variableIntValue;
+    std::string terminalType;
 };
 
 #endif //TP1GENETICPROGRAMMING_OPERATORS_H

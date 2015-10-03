@@ -2,36 +2,37 @@
 #include <memory>
 #include "Operators.h"
 #include "BinaryTree.h"
-
-using namespace std;
+#include "ExpressionParse.h"
+#include "Population.h"
 
 int main()
 {
     auto seed = time(NULL);
-    std::cout << "Hello, no seed was defined, so the program will use the default time(NULL) seed." << std::endl << "Your seed is : " + to_string(seed) << std::endl;
+    std::cout << "Hello, no seed was defined, so the program will use the default time(NULL) seed." << std::endl << "Your seed is : " + std::to_string(seed) << std::endl;
     srand(seed);
 
-    Function mult(OperatorsFunctionsName::SMULT_FUNC_TYPE);
-    Operators op = mult;
-    Function log(OperatorsFunctionsName::SLOG_FUNC_TYPE);
-    Tree<Operators> tree(op);
+    std::vector<Individual> individualsList;
+    for(int i = 0 ; i < 30 ; i++)
+    {
+        Individual individual;
+        individualsList.push_back(individual);
+    }
 
-    auto root = tree.getRoot();
+    std::map<std::string, double> variables;
+    variables["A"] = 2.9;
+    variables["B"] = 3.1;
+    ExpressionParser parse(variables);
 
-    Variable v1(1);
-    op = v1;
-    root->insertLeftChild(op);
-    Number n1(3.2);
-    Number n2(3.3);
-    //root->insertLeftChild(*c1);
-    //root->content = v1;
+    for (Individual individual : individualsList)
+    {
+        parse.setExpression(individual.getGenotype().getMathematicalExpression());
+        double result = parse.parse();
+        if(!std::isnan(result))
+        {
 
-
-    std::cout << "Value of Constant : " << tree.getRoot()->content.getValue();
-    std::cout << "Value of leftmost child : " << tree.getLeftmostChild()->content.getValue();
-
-
-    //std::cout << "You created a variable of type " << t.getType() << " = " << t.getValue() << " or " << t.getValueAsCharConstant() << std::endl;
+            std::cout << individual.getGenotype().getMathematicalExpression() << " = " << result << std::endl;
+        }
+    }
 
     return 0;
 }
