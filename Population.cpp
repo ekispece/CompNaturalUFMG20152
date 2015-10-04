@@ -7,8 +7,10 @@
 #include "Population.h"
 #include "ExecutionParameters.h"
 
-Individual::Individual()
+Individual::Individual():
+fitnessScore(0)
 {
+    setGenerationMethod(IndividualsGenerationMethodNames::SRANDOM_METHOD_TYPE);
     Operators op = generateRandomOperator();
 
     Tree tree(op);
@@ -22,6 +24,32 @@ Individual::Individual()
     populateNode(it);
 
     genotype = tree;
+}
+
+double Individual::getFitnessScore()
+{
+    return this->fitnessScore;
+}
+
+void Individual::setFitnessScore(double &fitnessScore)
+{
+    this->fitnessScore = fitnessScore;
+}
+
+void Individual::Copy(Individual & ind)
+{
+    this->fitnessScore = ind.getFitnessScore();
+    this->genotype = ind.getGenotype();
+}
+
+void Individual::setGenerationMethod(std::string generationMethod)
+{
+    this->generationMethod = generationMethod;
+}
+
+std::string Individual::getGenerationMethod()
+{
+    return this->generationMethod;
 }
 
 void Individual::populateNode(Node * node)
@@ -96,4 +124,29 @@ Function generateRandomFunction()
     int randomFunctionNumber = rand() % OperatorsFunctionsName::totalFunctions;
     Function function(OperatorsFunctionsName::getFunctionsVector()[randomFunctionNumber]);
     return function;
+}
+
+IndividualsMetrics::IndividualsMetrics(std::vector<Individual> individuals, const double parentsAverageFitness)
+{
+    int currentIndividual = 0;
+    for(auto individual : individuals)
+    {
+        if (std::isfinite(individual.getFitnessScore()))//once again I'm only interested in individuals with a valid fitness, individuals with invalid fitness would just make the average go crazy
+        {
+            validIndividuals++;
+            averageFitness += individual.getFitnessScore();
+            if (individual.getFitnessScore() > parentsAverageFitness && individual.getGenerationMethod() == IndividualsGenerationMethodNames::SCROSSOVER_METHOD_TYPE)
+                crossoverIndividualsWithBetterFitnessThanParents++;
+        }
+        for (int i = currentIndividual+1 ; i < individuals.size(); i++)
+        {
+            if (individual.getGenotype().getRoot()->equals(individuals[i].getGenotype().getRoot()))
+            {
+                repeatedIndividuals++;
+                break;
+            }
+        }
+        currentIndividual++;
+    }
+    averageFitness /= validIndividuals;
 }

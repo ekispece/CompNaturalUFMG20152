@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ExecutionParameters.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ExpressionParse.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/FileParser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/FileParser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Operators.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Operators.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Population.cpp" isTestSource="false" />

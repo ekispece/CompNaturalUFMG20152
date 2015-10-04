@@ -22,5 +22,5 @@ set(MU_INCLUDE_FILES
         muparser/include/muParserTokenReader.h
 )
 
-set(SOURCE_FILES main.cpp Population.cpp Population.h Operators.cpp Operators.h TypesDefinition.h Terminals.cpp Terminals.h BinaryTree.h ExpressionParse.h ${MU_INCLUDE_FILES} ExecutionParameters.h)
+set(SOURCE_FILES main.cpp Population.cpp Population.h Operators.cpp Operators.h TypesDefinition.h Terminals.cpp Terminals.h BinaryTree.h ExpressionParse.h ${MU_INCLUDE_FILES} ExecutionParameters.h FileParser.cpp FileParser.h)
 add_executable(TP1GeneticProgramming ${SOURCE_FILES})

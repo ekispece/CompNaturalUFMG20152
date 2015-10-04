@@ -38,11 +38,9 @@ public:
         //insertLeftChild(contentLeft);
     }
 
-    void insertLeftChild(Operators& contentLeft)
+    bool equals(Node* node)
     {
-        Node* left = new Node(contentLeft, this->layer+1, this);
-        this->leaf = false;
-        this->left = left;
+        equals(this, node);
     }
 
     Operators content;
@@ -51,6 +49,31 @@ public:
     Node* parent;
     bool leaf;
     int layer;
+
+private:
+    bool equals(Node* node1, Node* node2)
+    {
+        bool ans = true;
+        if (node1->content.getValue() == node2->content.getValue())
+        {
+            if (node1->leaf == node2->leaf)
+            {
+                if (!node1->leaf)
+                {
+                    ans = (ans&&equals(node1->left, node2->left)&&equals(node1->right,node2->right));
+                }
+            }
+            else
+            {
+                ans = false;
+            }
+        }
+        else
+        {
+            ans = false;
+        }
+        return ans;
+    }
 };
 
 class Tree

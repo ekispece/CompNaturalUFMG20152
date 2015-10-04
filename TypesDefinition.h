@@ -28,7 +28,7 @@ public:
     static constexpr const char* SMULT_FUNC_TYPE = "*";
     static constexpr const char* SSUM_FUNC_TYPE = "+";
     static constexpr const char* SSUB_FUNC_TYPE = "-";
-    static constexpr const char* SDIV_FUNC_TYPE = "/";
+    static constexpr const char* SDIV_FUNC_TYPE = "//";
     static constexpr const char* SNPOW_FUNC_TYPE = "^";
     static std::vector<const char*> getFunctionsVector()
     {
@@ -36,10 +36,18 @@ public:
         v.push_back("*");
         v.push_back("+");
         v.push_back("-");
-        v.push_back("/");
+        v.push_back("//");
         v.push_back("^");
         return v;
     }
+};
+
+class IndividualsGenerationMethodNames
+{
+public:
+    static constexpr const char* SCROSSOVER_METHOD_TYPE = "crossover";
+    static constexpr const char* SMUTATION_METHOD_TYPE = "mutation";
+    static constexpr const char* SRANDOM_METHOD_TYPE = "random";
 };
 
 #endif //TP1GENETICPROGRAMMING_TYPESDEFINITION_H
